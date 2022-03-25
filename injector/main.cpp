@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
 				printf("[%d]: %d\n", i, pids[i]);
 			}
 
-			scanf("%d", &injectIndex);
+			scanf_s("%d", &injectIndex);
 			if (injectIndex != -1 && injectIndex < pids.size()) {
 				bool success = InjectSetWindowsHookEx(pids[injectIndex], dll_path);
 				//bool success = InjectManualMap(pids[injectIndex], "dummydll.dll", InjectionType::THREAD_HIJACK);

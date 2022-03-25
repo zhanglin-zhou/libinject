@@ -86,7 +86,11 @@ bool InjectionManualMap::InjectHelper(std::vector<unsigned char> payload)
 					}
 
 					GetThreadContext(hThread, &ctx);
+#ifdef _WIN64
 					ctx.Rip = (DWORD_PTR)procMem;
+#else
+					ctx.Eip = (DWORD_PTR)procMem;
+#endif
 
 					SetThreadContext(hThread, &ctx);
 					ResumeThread(hThread);
